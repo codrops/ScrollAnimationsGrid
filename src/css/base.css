@@ -169,7 +169,6 @@ a:focus-visible {
 
 .frame {
 	position: fixed;
-	text-align: center;
 	z-index: 1000;
 	top: 0;
 	left: 0;
@@ -177,12 +176,11 @@ a:focus-visible {
 	align-content: space-between;
 	width: 100%;
 	max-width: none;
-	height: 100vh;
 	padding: 1rem;
 	pointer-events: none;
-	grid-template-columns: auto 1fr;
-	grid-template-rows: auto 1fr auto;
-	grid-template-areas: '... sponsor' '... ...' 'title demos';
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(4,auto);
+	grid-template-areas: 'title' 'prev' 'sponsor' 'demos' ;
 }
 
 .frame a,
@@ -225,9 +223,6 @@ a:focus-visible {
 
 .frame__demos {
 	grid-area: demos;
-	justify-self: end;
-	margin: 0 1rem;
-	white-space: nowrap;
 }
 
 .frame__demos a {
@@ -240,14 +235,13 @@ a:focus-visible {
 	color: var(--color-text);
 }
 
-.frame__demo--current::after {
-	content: '';
-	position: absolute;
-	top: 100%;
-	height: 120%;
-	width: 1px;
-	left: 50%;
-	background: currentColor;
+.frame__prev {
+	grid-area: prev;
+	justify-self: start;
+}
+
+.frame__demos-title {
+	display: block;
 }
 
 .grid {
@@ -330,7 +324,26 @@ a:focus-visible {
 
 @media screen and (min-width: 53em) {
 	.frame {
-		text-align: left;
+		height: 100vh;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto 1fr auto;
+		grid-template-areas: 'prev sponsor' '... ...' 'title demos';
 	}
-
+	.frame__demos {
+		justify-self: end;
+		margin: 0 1rem;
+		white-space: nowrap;
+	}
+	.frame__demo--current::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		height: 120%;
+		width: 1px;
+		left: 50%;
+		background: currentColor;
+	}
+	.frame__demos-title {
+		display: inline;
+	}
 }
