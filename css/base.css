@@ -1,0 +1,364 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 13px;
+	/* Spacing: the 15-point scale */
+	--space-1: 15px;
+	--space-2: 30px;
+	--space-3: 60px;
+	--space-4: 90px;
+	--color-text: #fff;
+	--color-text-dim: rgb(255 255 255 / 55%);
+	--color-line: rgb(255 255 255 / 20%);
+	--color-bg: #0b0b0b;
+	/* Each variation's light, tinted with its own colour */
+	--color-glow: #d8d2cd;
+	--glow-at: 50% 0%;
+	--glow-strength: 22%;
+	--font-display: 'Inter Tight', sans-serif;
+	--font-ui: 'Host Grotesk', sans-serif;
+}
+
+body {
+	margin: 0;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: var(--font-ui);
+	font-size: 1rem;
+	line-height: 1.4;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* A soft light from the top of the screen, behind everything */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	background: radial-gradient(ellipse 70% 65% at var(--glow-at), color-mix(in srgb, var(--color-glow) var(--glow-strength), transparent), transparent);
+	pointer-events: none;
+}
+
+.demo-2 {
+	--color-glow: #b41717;
+}
+
+.demo-3 {
+	--color-glow: #846c64;
+}
+
+.demo-4 {
+	--color-glow: #ccc3cf;
+}
+
+.demo-5 {
+	--color-glow: #6c7059;
+}
+
+.demo-6 {
+	--color-glow: #eb3c0c;
+}
+
+.demo-7 {
+	--color-glow: #b4176e;
+}
+
+.demo-8 {
+	--color-glow: #606c62;
+}
+
+/* The light comes from the middle, where the images come out of the depth, and fainter, since it sits right behind them */
+.demo-9 {
+	--color-glow: #2a8a8f;
+	--glow-at: 50% 50%;
+	--glow-strength: 10%;
+}
+
+.demo-10 {
+	--color-glow: #3c64c8;
+}
+
+.demo-11 {
+	--color-glow: #8058b0;
+}
+
+/* The light comes from the bottom, behind the globe's horizon */
+.demo-12 {
+	--color-glow: #d08a2a;
+	--glow-at: 50% 100%;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+.js .loading::before {
+	inset: 0;
+	background: var(--color-bg);
+}
+
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: var(--space-3);
+	height: 1px;
+	margin-left: calc(var(--space-3) / -2);
+	background: var(--color-text-dim);
+	animation: loaderAnim 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes loaderAnim {
+	from {
+		transform: scaleX(0.1);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.js .loading::after {
+		animation: none;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-text-dim);
+	transition: color 0.3s;
+}
+
+a:hover {
+	color: var(--color-text);
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus-visible {
+	/* Draw a very noticeable focus style for
+	 keyboard-focus */
+	outline: 2px solid red;
+}
+
+.frame {
+	position: relative;
+	z-index: 1000;
+	display: grid;
+	gap: var(--space-1);
+	width: 100%;
+	padding: var(--space-1);
+	pointer-events: none;
+	justify-items: start;
+	grid-template-columns: 100%;
+	grid-template-areas: 'title' 'links' 'tags' 'demos' 'sponsor';
+}
+
+.frame a {
+	pointer-events: auto;
+}
+
+.frame__title {
+	grid-area: title;
+	font-size: inherit;
+	margin: 0;
+	font-weight: 400;
+}
+
+.frame__links,
+.frame__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-1);
+}
+
+.frame__links {
+	grid-area: links;
+}
+
+.frame__tags {
+	grid-area: tags;
+}
+
+/* A hairline under the frame's links, drawn in on hover */
+.frame__links a,
+.frame__tags a {
+	position: relative;
+}
+
+.frame__links a::after,
+.frame__tags a::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	width: 100%;
+	height: 1px;
+	background: currentColor;
+	transform: scaleX(0);
+	transform-origin: 100% 50%;
+	transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+	.frame__links a:hover::after,
+	.frame__tags a:hover::after {
+		transform: scaleX(1);
+		transform-origin: 0% 50%;
+	}
+}
+
+/* The variations in a box of their own: on phones the label above the numbers, six to a row; from 53em the label beside them, all in a row */
+.frame__demos {
+	grid-area: demos;
+	display: grid;
+	grid-template-columns: repeat(6, var(--space-2));
+	align-items: center;
+	border: 1px solid var(--color-line);
+	font-variant-numeric: tabular-nums;
+}
+
+.frame__demos-label {
+	grid-column: 1 / -1;
+	padding: 0 var(--space-1);
+	line-height: var(--space-2);
+	border-bottom: 1px solid var(--color-line);
+	color: var(--color-text-dim);
+}
+
+.frame__demo {
+	width: var(--space-2);
+	height: var(--space-2);
+	display: grid;
+	place-items: center;
+}
+
+.frame__demo--current {
+	background: var(--color-text);
+	color: var(--color-bg);
+}
+
+.frame #cdawrap {
+	grid-area: sponsor;
+	justify-self: start;
+}
+
+.content {
+	/* Items pushed past the right edge (demos 3, 6, 7 and 8) are cut off here, so the page never gets wider than the screen */
+	overflow-x: clip;
+}
+
+.grid {
+	position: relative;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(8,1fr);
+}
+
+.grid__item {
+	position: relative;
+	will-change: transform;
+	grid-column: var(--c);
+	grid-row: var(--r);
+}
+
+/* Portraits; squares only where the images round into circles (02 and 04) */
+.grid__item-img {
+	position: relative;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4 / 5;
+	background-size: cover;
+	background-position: 50% 50%;
+	will-change: transform, opacity;
+}
+
+.demo-2 .grid__item-img,
+.demo-4 .grid__item-img {
+	aspect-ratio: 1;
+}
+
+.demo-1 .grid__item-img {
+	filter: contrast(70%);
+}
+
+.footer {
+	height: 100svh;
+	padding: var(--space-2);
+	font-family: var(--font-display);
+	font-size: clamp(26px, 3.4vw, 50px);
+	font-weight: 500;
+	line-height: 1.08;
+	letter-spacing: -0.035em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.footer p {
+	max-width: 28ch;
+	margin: 0;
+}
+
+/* 10 draws the images with WebGL: the canvas sits behind the page's text, over its glow, and while it draws,
+   the DOM images only hold their places */
+.grid-canvas {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: -1;
+	display: none;
+}
+
+.is-webgl .grid-canvas {
+	display: block;
+}
+
+.is-webgl .grid__item-img {
+	visibility: hidden;
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		padding: var(--space-2);
+		column-gap: var(--space-2);
+		align-content: space-between;
+		grid-template-columns: 1fr auto;
+		grid-template-rows: auto auto 1fr auto;
+		grid-template-areas: 'title sponsor' 'links sponsor' '. .' 'tags demos';
+	}
+	.frame__tags {
+		align-self: end;
+	}
+	.frame__demos {
+		justify-self: end;
+		align-self: end;
+		grid-template-columns: auto repeat(12, var(--space-2));
+	}
+	.frame__demos-label {
+		grid-column: auto;
+		border-bottom: 0;
+	}
+	.frame #cdawrap {
+		justify-self: end;
+		max-width: 300px;
+		text-align: right;
+	}
+	.grid {
+		gap: var(--space-2);
+		padding: 0 var(--space-2);
+	}
+}

@@ -6,36 +6,22 @@ Various effects for images when scrolling a page with a grid.
 
 [Article on Codrops](https://tympanus.net/codrops/?p=63672)
 
-[Demo](http://tympanus.net/Development/ScrollAnimationsGrid/)
-
+[Demo](https://tympanus.net/Development/ScrollAnimationsGrid/)
 
 ## Installation
 
-Install dependencies:
-
-```
-npm install
-```
-
-Compile the code for development and start a local server:
-
-```
-npm start
-```
-
-Create the build:
-
-```
-npm run build
-```
+Run this demo on a [local server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Tools_and_setup/set_up_a_local_testing_server).
 
 ## Credits
 
 - Images from [Unsplash](https://unsplash.com/)
+- [GSAP](https://gsap.com) with ScrollTrigger
+- [Lenis](https://github.com/darkroomengineering/lenis) for smooth scrolling
+- [three.js](https://threejs.org) for the WebGL variations
 
 ## Misc
 
-Follow Codrops: [Twitter](http://www.twitter.com/codrops), [Facebook](http://www.facebook.com/codrops), [GitHub](https://github.com/codrops), [Instagram](https://www.instagram.com/codropsss/)
+Follow Codrops: [X](https://x.com/codrops), [Facebook](http://www.facebook.com/codrops), [GitHub](https://github.com/codrops), [Instagram](https://www.instagram.com/codropsss/)
 
 ## License
 [MIT](LICENSE)

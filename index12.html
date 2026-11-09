@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Horizon Grid Scroll Animation | Codrops</title>
+	<meta name="description" content="Below the middle of the screen the grid curves away over a globe: the images come up over its horizon, roll toward you and flatten into the grid. Made with three.js, GSAP and Lenis. Part of Codrops' Image Grid Scroll Animations." />
+	<meta name="keywords" content="scroll, effect, animation, image, gsap, lenis, webgl, three.js, webgpu, tsl" />
+	<meta name="author" content="Codrops" />
+	<link rel="canonical" href="https://tympanus.net/Development/ScrollAnimationsGrid/index12.html" />
+	<meta name="theme-color" content="#0b0b0b" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Codrops" />
+	<meta property="og:title" content="Horizon Grid Scroll Animation | Codrops" />
+	<meta property="og:description" content="Below the middle of the screen the grid curves away over a globe: the images come up over its horizon, roll toward you and flatten into the grid. Made with three.js, GSAP and Lenis. Part of Codrops' Image Grid Scroll Animations." />
+	<meta property="og:url" content="https://tympanus.net/Development/ScrollAnimationsGrid/index12.html" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@codrops" />
+	<meta name="twitter:title" content="Horizon Grid Scroll Animation | Codrops" />
+	<meta name="twitter:description" content="Below the middle of the screen the grid curves away over a globe: the images come up over its horizon, roll toward you and flatten into the grid. Made with three.js, GSAP and Lenis. Part of Codrops' Image Grid Scroll Animations." />
+	<link rel="icon" type="image/svg+xml" href="https://tympanus.net/favicon/favicon.svg" />
+	<link rel="shortcut icon" href="https://tympanus.net/favicon/favicon.ico" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="preload" as="image" href="img/6.jpg" fetchpriority="high" />
+	<link rel="preload" as="image" href="img/20.jpg" fetchpriority="high" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk&family=Inter+Tight:wght@500&display=block">
+	<link rel="stylesheet" type="text/css" href="css/lenis.css" />
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<script type="importmap">
+		{
+			"imports": {
+				"three/webgpu": "./js/three/three.webgpu.min.js",
+				"three/tsl": "./js/three/three.tsl.min.js",
+				"./js/three/three.core.js": "./js/three/three.core.min.js"
+			}
+		}
+	</script>
+	<script>document.documentElement.className = "js";</script>
+	<!-- Added on the live server only, leave commented out in the repo -->
+	<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"name": "Horizon Grid Scroll Animation",
+		"description": "Below the middle of the screen the grid curves away over a globe: the images come up over its horizon, roll toward you and flatten into the grid. Made with three.js, GSAP and Lenis. Part of Codrops' Image Grid Scroll Animations.",
+		"url": "https://tympanus.net/Development/ScrollAnimationsGrid/index12.html",
+		"author": {
+			"@type": "Organization",
+			"name": "Codrops",
+			"url": "https://tympanus.net/codrops/"
+		},
+		"isPartOf": {
+			"@type": "WebSite",
+			"name": "Codrops",
+			"url": "https://tympanus.net/codrops/"
+		},
+		"relatedLink": [
+			"https://tympanus.net/codrops/2022/05/31/scroll-animation-ideas-for-image-grids/",
+			"https://github.com/codrops/ScrollAnimationsGrid"
+		]
+	}
+	</script>
+</head>
+
+<body class="demo-12 loading">
+	<main>
+		<header class="frame">
+			<h1 class="frame__title">Image Grid Scroll Animations</h1>
+			<nav class="frame__links" aria-label="Demo links">
+				<a href="https://tympanus.net/codrops/?p=63672">Article</a>
+				<a href="https://tympanus.net/codrops/hub/">All demos</a>
+				<a href="https://github.com/codrops/ScrollAnimationsGrid/">GitHub</a>
+			</nav>
+			<nav class="frame__tags" aria-label="Tags">
+				<a href="https://tympanus.net/codrops/hub/tag/grid/">#grid</a>
+				<a href="https://tympanus.net/codrops/hub/tag/scroll/">#scroll</a>
+				<a href="https://tympanus.net/codrops/hub/tag/gsap/">#gsap</a>
+				<a href="https://tympanus.net/codrops/hub/tag/3d/">#3d</a>
+				<a href="https://tympanus.net/codrops/hub/tag/webgl/">#webgl</a>
+				<a href="https://tympanus.net/codrops/hub/tag/three-js/">#three.js</a>
+				<a href="https://tympanus.net/codrops/hub/tag/webgpu/">#webgpu</a>
+				<a href="https://tympanus.net/codrops/hub/tag/tsl/">#tsl</a>
+			</nav>
+			<nav class="frame__demos" aria-label="Variations">
+				<span class="frame__demos-label">Variations</span>
+				<a class="frame__demo" href="index.html">01</a>
+				<a class="frame__demo" href="index2.html">02</a>
+				<a class="frame__demo" href="index3.html">03</a>
+				<a class="frame__demo" href="index4.html">04</a>
+				<a class="frame__demo" href="index5.html">05</a>
+				<a class="frame__demo" href="index6.html">06</a>
+				<a class="frame__demo" href="index7.html">07</a>
+				<a class="frame__demo" href="index8.html">08</a>
+				<a class="frame__demo" href="index9.html">09</a>
+				<a class="frame__demo" href="index10.html">10</a>
+				<a class="frame__demo" href="index11.html">11</a>
+				<span class="frame__demo frame__demo--current" aria-current="page">12</span>
+			</nav>
+		</header>
+		<div class="content">
+			<div class="grid">
+				<div class="grid__item" style="--r: 1;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(img/6.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 1;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 2;--c: 8;">
+					<div class="grid__item-img" style="background-image:url(img/2.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 2;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(img/19.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 3;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 3;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(img/18.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 4;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(img/4.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 4;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(img/17.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 5;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(img/5.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 5;--c: 8;">
+					<div class="grid__item-img" style="background-image:url(img/16.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 6;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(img/1.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 7;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(img/7.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 8;--c: 7;">
+					<div class="grid__item-img" style="background-image:url(img/8.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 8;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(img/1.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 9;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(img/9.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 9;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(img/17.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 10;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(img/10.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 11;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(img/11.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 11;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(img/2.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 12;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(img/12.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 13;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(img/13.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 14;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(img/14.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 15;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(img/15.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 16;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(img/16.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 16;--c: 7;">
+					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 17;--c: 8;">
+					<div class="grid__item-img" style="background-image:url(img/17.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 18;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(img/18.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 19;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(img/19.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 20;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 21;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(img/1.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 22;--c: 7;">
+					<div class="grid__item-img" style="background-image:url(img/2.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 23;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 24;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(img/4.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 25;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(img/5.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 26;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(img/6.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 27;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(img/7.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 28;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(img/8.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 29;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(img/9.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 30;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(img/10.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 31;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(img/11.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 32;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(img/12.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 33;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(img/13.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 34;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(img/14.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 35;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(img/15.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 36;--c: 8;">
+					<div class="grid__item-img" style="background-image:url(img/16.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 37;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(img/17.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 38;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(img/18.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 39;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(img/19.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 40;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+				</div>
+			</div>
+			<div class="footer">
+				<p>From the dawn of civilisation onwards crowds have always undergone the influence of illusions. It is to the creators of illusions that they have raised more temples, statues, and altars than to any other class of men.</p>
+			</div>
+		</div>
+	</main>
+	<!-- Added on the live server only, leave commented out in the repo -->
+	<!--script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script-->
+	<script src="js/gsap.min.js"></script>
+	<script src="js/ScrollTrigger.min.js"></script>
+	<script src="js/lenis.min.js"></script>
+	<script type="module" src="js/demo12/index.js"></script>
+</body>
+
+</html>
