@@ -25,6 +25,7 @@ Notes for coding agents working on this repo. Read [README.md](README.md) first 
 | `css/base.css` | All styles: the colour, font and spacing tokens, each page's glow (`.demo-<N>`), the loader, the frame, the grid, the closing quote (`.footer`) and the WebGL canvas of pages 10–12 (`.grid-canvas`, `.is-webgl`). |
 | `css/lenis.css` | Lenis's recommended styles. |
 | `img/` | The 20 images (300×300 JPEGs). |
+| `og-image.jpg` | The pages' social preview (`og:image`, `twitter:image`): 1200×630, a frame of 10 Tunnel. |
 
 ## How a page works
 
